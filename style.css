@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     background-color: #f4f1ec;
     color: #929292;
     
@@ -38,6 +38,8 @@ body {
     margin:0 auto;
     display: flex;
     justify-content: center;
+    perspective: 800px;
+   
     
 }
 
@@ -71,8 +73,8 @@ body {
     cursor: pointer;
     align-items: center;
     transform-origin: top center;
-    transition: transform 0.4s ease;
-   
+    transition: transform 0.5s ease;
+    
 }
 .hanger{
     display: block;
@@ -91,6 +93,7 @@ body {
     width: 100%;
     aspect-ratio: 4/5;
     margin-top: -30px;
+    
    
    
 }
@@ -105,10 +108,11 @@ body {
 }
 
 .garment.peek{
-    z-index: 5;
-    transform: translateY(16px) 
-    rotate(-5deg) scale(1.08);
+    z-index: 10;
+    transform: translateX(30px) rotateY(-20deg) scale(1.1)
 }
+
+
 .garment.push-left{
     transform:translateX(-30px);
 
