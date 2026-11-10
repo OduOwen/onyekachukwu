@@ -109,7 +109,7 @@ body {
 
 .garment.peek{
     z-index: 10;
-    transform: translateX(30px) rotateY(-20deg) scale(1.1)
+    transform: translateX(30px) rotateY(-22deg) scale(1.07)
 }
 
 

@@ -112,6 +112,21 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+const rack = document.querySelector('.rack');
+let startX = 0;
+
+rack.addEventListener('touchstart', function (e) {
+  startX = e.touches[0].clientX;
+});
+
+rack.addEventListener('touchend', function (e) {
+  const diff = e.changedTouches[0].clientX - startX;
+  if (Math.abs(diff) < 50) return;
+
+  const key = diff < 0 ? 'ArrowRight' : 'ArrowLeft';
+  document.dispatchEvent(new KeyboardEvent('keydown', { key: key }));
+});
+
 
 const hanger = garments[index].querySelector('.hanger');
 
