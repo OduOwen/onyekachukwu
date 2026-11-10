@@ -35,6 +35,7 @@ body {
     position: relative;
     padding: 8px 0 60px;
     width: 100%;
+    max-width: 900px;
     margin:0 auto;
     display: flex;
     justify-content: center;
@@ -54,19 +55,20 @@ body {
     box-shadow: 0 5px 8px rgba(0,0,0,0.18);
 }
 
-.clothes{
+.clothes {
+    --n: 7;
+    --w: clamp(120px, 38vw, 260px);
     display: flex;
-    width: max-content;
-    margin: 0 auto;
-    padding: 0 60px 0 190px;
+    width: 100%;
 }
 
 .garment{
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 260px;
-    margin-left: -180px;
+    width:var(--w);
+    flex-shrink: 0;
+    margin-left: calc((100% - var(--w)) / (var(--n) - 1) - var(--w));
     padding: 0;
     background: none;
     border: none;
@@ -75,6 +77,9 @@ body {
     transform-origin: top center;
     transition: transform 0.5s ease;
     
+}
+.garment:first-child {
+    margin-left: 0;
 }
 .hanger{
     display: block;
@@ -210,3 +215,4 @@ body {
 .hanger.swing {
     animation: hangerSwing 0.5s ease-in-out;
 }
+

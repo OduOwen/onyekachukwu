@@ -136,3 +136,8 @@ void hanger.offsetWidth;
 
 hanger.classList.add('swing');
 
+/**
+ for spacing to automatically adjust itself no matter amount of clothes on a rack
+ */
+const clothesRow = document.querySelector('.clothes');
+clothesRow.style.setProperty('--n', clothesRow.children.length);
