@@ -171,6 +171,10 @@ body {
     border-radius:6px;
     cursor:pointer;
 }
+.size-btn.selected {
+    background: #222;
+    color: #fff;
+}
 
 .add-btn{
     padding: 12px 24px;
@@ -216,3 +220,37 @@ body {
     animation: hangerSwing 0.5s ease-in-out;
 }
 
+.cart-btn {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 50;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+}
+
+.cart-btn img {
+    width: 24px;
+    height: 30px;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #c0392b;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.cart-badge[hidden] {
+    display: none;
+}
