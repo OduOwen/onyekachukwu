@@ -154,7 +154,7 @@ function openFullview(i) {
     b.className = 'size-btn';
 
     // When this size button is tapped...
-    b.addEventListener('click', function () {
+    b.addEventListener('pointerup', function () {
       // Remember the chosen size
       selectedSize = size;
 
