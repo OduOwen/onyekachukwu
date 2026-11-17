@@ -4,9 +4,9 @@
 
 // One entry per shirt, in the same order as the shirts on the rack (left to right)
 const products = [
-  { name: 'Saint', price: '$80', sizes: ['S', 'M', 'L'], image: 'images/saint.png' },
-  { name: 'Burnt Red', price: '$140', sizes: ['M', 'L', 'XL'], image: 'images/Lazydev.png' },
-  { name: 'Evil Angel', price: '$110', sizes: ['S', 'M', 'L'], image: 'images/Lazydev.png' },
+  { name: 'Saint', price: 80, sizes: ['S', 'M', 'L'], image: 'images/saint.png' },
+  { name: 'Burnt Red', price: 140, sizes: ['M', 'L', 'XL'], image: 'images/Lazydev.png' },
+  { name: 'Evil Angel', price: 110, sizes: ['S', 'M', 'L'], image: 'images/Lazydev.png' },
 ];
 
 
@@ -119,7 +119,7 @@ function openFullview(i) {
   document.getElementById('modalname').textContent = p.name;
 
   // Write the price into the popup
-  document.getElementById('modalprice').textContent = p.price;
+  document.getElementById('modalprice').textContent ='$'+ p.price;
 
   // The box that holds the big picture
   const modalimage = document.getElementById('modalimage');
@@ -321,3 +321,13 @@ document.querySelector('.add-btn').addEventListener('click', function () {
 
 // Show the right number when the page first loads
 showCount();
+
+const cartPanel = document.getElementById('cart-panel');
+
+document.querySelector('.cart-btn').addEventListener('click', function () {
+  cartPanel.hidden = false;
+});
+
+document.getElementById('close-cart').addEventListener('click', function () {
+  cartPanel.hidden = true;
+});

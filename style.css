@@ -7,7 +7,7 @@
 body {
     font-family: 'Cormorant Garamond', serif;
     background-color: #f4f1ec;
-    color: #929292;
+    color: #212623;
     
 }
 #background-video{
@@ -223,13 +223,13 @@ body {
 .cart-btn {
     position: fixed;
     top: 16px;
-    right: 16px;
+    left: 16px;
     z-index: 50;
     width: 48px;
     height: 48px;
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
+    background:transparent;
     cursor: pointer;
 }
 
@@ -245,7 +245,7 @@ body {
     min-width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #c0392b;
+    background: #270d0a;
     color: #fff;
     font-size: 12px;
     line-height: 20px;
@@ -253,4 +253,54 @@ body {
 
 .cart-badge[hidden] {
     display: none;
+}
+.cart-btn img {
+    filter: brightness(0) invert(1);
+}
+
+.cart-panel{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(90%, 380px);
+    height:100%;
+    padding: 20px;
+    background: #fff;
+    color: #222;
+    z-index: 120;
+    overflow-y: auto;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
+
+}
+.cart-panel[hidden] {
+    display: none;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.close-cart {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-total {
+    margin: 20px 0;
+    font-size: 1.2rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 14px;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
