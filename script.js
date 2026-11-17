@@ -37,6 +37,7 @@ function resetRack() {
     // Remove the swing and slide classes from each shirt
     g.classList.remove('peek', 'push-left', 'push-right');
   });
+
   // Nothing is pulled out now
   selected = null
 }
@@ -212,8 +213,11 @@ document.addEventListener('keydown', function (e) {
     if (!modal.hidden) {
       // Popup is open, so close it
       modal.hidden = true;
+    } else if (!cartPanel.hidden || !menuPanel.hidden) {
+      // Close the cart or menu if either one is open
+      closePanels();
     } else {
-      // Popup is closed, so put shirts back
+      // No popup or side panel is open, so put shirts back
       resetRack();
     }
   }
@@ -324,13 +328,18 @@ showCount();
 
 const cartPanel = document.getElementById('cart-panel');
 
+// The dark layer behind the menu and cart
+const backdrop = document.getElementById('backdrop');
+
 document.querySelector('.cart-btn').addEventListener('click', function () {
   renderCart();
   cartPanel.hidden = false;
+  showBackdrop();
 });
 
 document.getElementById('close-cart').addEventListener('click', function () {
   cartPanel.hidden = true;
+  hideBackdropIfNoPanels();
 });
 
 
@@ -377,34 +386,49 @@ function removeItem(i) {
 
 const menuPanel = document.getElementById('menu-panel');
 
+// Show the dark background and prevent the page behind it from scrolling
+function showBackdrop() {
+  backdrop.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+// Hide the dark background only when both side panels are closed
+function hideBackdropIfNoPanels() {
+  if (cartPanel.hidden && menuPanel.hidden) {
+    backdrop.hidden = true;
+    document.body.style.overflow = '';
+  }
+}
+
+// Close both side panels and restore the page
+function closePanels() {
+  cartPanel.hidden = true;
+  menuPanel.hidden = true;
+  backdrop.hidden = true;
+  document.body.style.overflow = '';
+}
+
 // Open the menu
 document.getElementById('menu-btn').addEventListener('click', function () {
   menuPanel.hidden = false;
+  showBackdrop();
 });
 
 // Close with the X
 document.getElementById('close-menu').addEventListener('click', function () {
   menuPanel.hidden = true;
+  hideBackdropIfNoPanels();
 });
 
 // "Shop" just closes the menu and shows the rack
 document.getElementById('menu-shop').addEventListener('click', function (e) {
   e.preventDefault();
   menuPanel.hidden = true;
+  hideBackdropIfNoPanels();
 });
 
-// "Cart" closes the menu and opens the cart panel
-document.getElementById('menu-cart').addEventListener('click', function (e) {
-  e.preventDefault();
-  menuPanel.hidden = true;
-  renderCart();
-  cartPanel.hidden = false;
-});
 
-// Tapping anywhere outside the menu closes it
-document.addEventListener('click', function (e) {
-  if (!menuPanel.hidden && !e.target.closest('#menu-panel') && !e.target.closest('#menu-btn')) {
-    menuPanel.hidden = true;
-  }
+// Tapping the dark background closes the menu and cart
+backdrop.addEventListener('click', function () {
+  closePanels();
 });
-  
