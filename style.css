@@ -261,7 +261,7 @@ body {
 .cart-panel{
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: min(90%, 380px);
     height:100%;
     padding: 20px;
@@ -302,5 +302,29 @@ body {
     color: #fff;
     border: none;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.cart-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+.cart-row img {
+    width: 64px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.cart-row div {
+    flex: 1;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: #c0392b;
     cursor: pointer;
 }

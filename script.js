@@ -325,9 +325,53 @@ showCount();
 const cartPanel = document.getElementById('cart-panel');
 
 document.querySelector('.cart-btn').addEventListener('click', function () {
+  renderCart();
   cartPanel.hidden = false;
 });
 
 document.getElementById('close-cart').addEventListener('click', function () {
   cartPanel.hidden = true;
 });
+
+
+function renderCart() {
+  const box = document.getElementById('cart-items')
+  let html = '';
+  let total = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    const item = cart[i];
+    const product = products.find(function(p){
+      return p.name === item.id;
+
+    }
+  );
+  if (!product) continue;
+
+  total = total + product.price;
+
+  html += `
+      <div class="cart-row">
+        <img src="${product.image}" alt="">
+        <div>
+          <p>${product.name}</p>
+          <p>Size ${item.size} · $${product.price}</p>
+        </div>
+        <button class="remove-btn" onclick="removeItem(${i})">Remove</button>
+      </div>
+    `;
+  }
+  if (cart.length === 0) {
+    html = '<p> Your cart is empty </p>';
+  }
+  box.innerHTML= html;
+  document.getElementById('cart-total').textContent = '$' + total;
+}
+
+function removeItem(i) {
+  cart.splice(i, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  showCount();
+  renderCart();
+}
+  
