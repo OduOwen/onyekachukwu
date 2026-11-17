@@ -7,7 +7,7 @@
 body {
     font-family: 'Cormorant Garamond', serif;
     background-color: #f4f1ec;
-    color: #212623;
+    color: #ffffff;
     
 }
 #background-video{
@@ -386,14 +386,3 @@ body {
 }
 
 
-.backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 110;
-    touch-action: none;
-}
-
-.backdrop[hidden] {
-    display: none;
-}
