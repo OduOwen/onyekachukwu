@@ -374,4 +374,37 @@ function removeItem(i) {
   showCount();
   renderCart();
 }
+
+const menuPanel = document.getElementById('menu-panel');
+
+// Open the menu
+document.getElementById('menu-btn').addEventListener('click', function () {
+  menuPanel.hidden = false;
+});
+
+// Close with the X
+document.getElementById('close-menu').addEventListener('click', function () {
+  menuPanel.hidden = true;
+});
+
+// "Shop" just closes the menu and shows the rack
+document.getElementById('menu-shop').addEventListener('click', function (e) {
+  e.preventDefault();
+  menuPanel.hidden = true;
+});
+
+// "Cart" closes the menu and opens the cart panel
+document.getElementById('menu-cart').addEventListener('click', function (e) {
+  e.preventDefault();
+  menuPanel.hidden = true;
+  renderCart();
+  cartPanel.hidden = false;
+});
+
+// Tapping anywhere outside the menu closes it
+document.addEventListener('click', function (e) {
+  if (!menuPanel.hidden && !e.target.closest('#menu-panel') && !e.target.closest('#menu-btn')) {
+    menuPanel.hidden = true;
+  }
+});
   
