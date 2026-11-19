@@ -443,3 +443,13 @@ a, button {
 button:not(.garment):active {
     opacity: 0.5;
 }
+
+/* Stops the whole page from sliding sideways */
+html, body {
+    overflow-x: hidden;
+}
+
+/* Sideways swipes belong to the rack, up and down still scrolls the page */
+.rack {
+    touch-action: pan-y;
+}
