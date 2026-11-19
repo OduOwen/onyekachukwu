@@ -48,15 +48,16 @@ h1{
     
 }
 
-.rail{
+.rail {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 8px;
-    background-color: #777;
-    border-radius: 4px;
-    box-shadow: 0 5px 8px rgba(0,0,0,0.18);
+    aspect-ratio: 1800 / 176;
+    background: url('images/rail.png') center / 100% 100% no-repeat;
+    transform: translateY(-47%) translateZ(0);
+    backface-visibility: hidden;
+    z-index: 5;
 }
 
 .clothes {
