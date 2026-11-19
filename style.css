@@ -35,43 +35,54 @@ h1{
     color: #777;
 }
 
+
+/* ============================================
+   RACK, RAIL, HANGER AND CLOTHES
+   Everything here is sized from ONE number: --w (the shirt width).
+   Change --w and the rail, hanger, shirt and spacing all scale together,
+   so it looks the same on phone and desktop.
+   ============================================ */
+
+/* The whole rack. --w is the width of one shirt:
+   at least 120px, 38% of the screen, at most 260px */
 .rack{
+    --w: clamp(120px, 38vw, 260px);
     position: relative;
-    padding: 8px 0 60px;
+    padding: calc(var(--w) * 0.054) 0 60px;
     width: 100%;
     max-width: 900px;
-    margin:0 auto;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     perspective: 800px;
-   
-    
 }
 
+/* The metal bar (your picture). Its thickness follows the shirt size */
 .rail {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    aspect-ratio: 1800 / 176;
+    height: calc(var(--w) * 0.236);
     background: url('images/rail.png') center / 100% 100% no-repeat;
-    transform: translateY(-47%) translateZ(0);
+    transform: translateY(-50%) translateZ(0);
     backface-visibility: hidden;
     z-index: 5;
 }
 
+/* The row that holds all the shirts. --n is the number of shirts (JavaScript sets it) */
 .clothes {
     --n: 7;
-    --w: clamp(120px, 38vw, 260px);
     display: flex;
     width: 100%;
 }
 
+/* One shirt + hanger. The negative margin makes shirts overlap */
 .garment{
     position: relative;
     display: flex;
     flex-direction: column;
-    width:var(--w);
+    width: var(--w);
     flex-shrink: 0;
     margin-left: calc((100% - var(--w)) / (var(--n) - 1) - var(--w));
     padding: 0;
@@ -81,34 +92,34 @@ h1{
     align-items: center;
     transform-origin: top center;
     transition: transform 0.5s ease;
-    
 }
+
 .garment:first-child {
     margin-left: 0;
 }
+
+/* The hanger picture: size and pull-up are fractions of the shirt width */
 .hanger{
     background: url('images/hanger.png') center / contain no-repeat;
     display: block;
-    width: 100px;
-    height: 100px;
-    border-bottom: none;
-    border-radius: 22px 22px 0 0;
+    width: calc(var(--w) * 0.676);
+    height: calc(var(--w) * 0.676);
+    margin-top: calc(var(--w) * -0.169);
     position: relative;
     z-index: 2;
     transform-origin: top center;
     transition: transform 0.3s ease;
-    margin-top: -25px;
 }
+
+/* The shirt picture. The pull-up tucks the collar behind the hanger */
 .cloth{
     display: block;
     width: 100%;
     aspect-ratio: 4/5;
-    margin-top: -78px;
+    margin-top: calc(var(--w) * -0.527);
     position: relative;
     z-index: 3;
-    
-   
-   
+    transition: transform 0.25s ease;
 }
 
 .cloth img{
@@ -120,19 +131,58 @@ h1{
     filter: drop-shadow(0 6px 8px rgba(0,0,0,0.3));
 }
 
+/* The tapped shirt swings out, the others slide aside */
 .garment.peek{
     z-index: 10;
-    transform: translateX(30px) rotateY(-22deg) scale(1.07)
+    transform: translateX(calc(var(--w) * 0.2)) rotateY(-22deg) scale(1.07);
 }
-
 
 .garment.push-left{
-    transform:translateX(-30px);
+    transform: translateX(calc(var(--w) * -0.2));
+}
 
-}
 .garment.push-right{
-    transform:translateX(30px);
+    transform: translateX(calc(var(--w) * 0.2));
 }
+
+/* Desktop only: shirt lifts slightly when the mouse is over it */
+@media (hover:hover){
+  .garment:not(.peek):hover .cloth{
+    transform: translateY(-6px);
+  }
+}
+
+/* Hanger swing animation */
+@keyframes hangerSwing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-4deg);
+    }
+
+    50% {
+        transform: rotate(4deg);
+    }
+
+    75% {
+        transform: rotate(-2deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.hanger.swing {
+    animation: hangerSwing 0.5s ease-in-out;
+}
+
+
+/* ============================================
+   POPUP (everything below is unchanged)
+   ============================================ */
 
 .modal{
     position:fixed;
@@ -191,41 +241,6 @@ h1{
     border: none;
     border-radius:6px;
     cursor: pointer;
-}
-
-@media (hover:hover){
-  .garment:not(.peek):hover .cloth{
-    transform: translateY(-6px);
-  }
-}
-
-.cloth{
-    transition: transform 0.25s ease;
-}
-@keyframes hangerSwing {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    25% {
-        transform: rotate(-4deg);
-    }
-
-    50% {
-        transform: rotate(4deg);
-    }
-
-    75% {
-        transform: rotate(-2deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
-.hanger.swing {
-    animation: hangerSwing 0.5s ease-in-out;
 }
 
 .cart-btn {
