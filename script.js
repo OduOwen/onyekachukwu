@@ -431,4 +431,4 @@ document.getElementById('menu-shop').addEventListener('click', function (e) {
 // Tapping the dark background closes the menu and cart
 backdrop.addEventListener('click', function () {
   closePanels();
-});s
+});
