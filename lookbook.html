@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lookbook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="lookbook.css">
+</head>
+<body>
+    <a class="back" href="index.html"><img src="images/turn-back.png" alt="go back"></a>
+  <h1 class="lb-title">LOOKBOOK</h1>
+   
+  <main class="slides">
+    <section class="slide">
+      <img src="images/rema.jpg" alt="Look 1">
+      <p class="caption">Look 01</p>
+    </section>
+
+    <section class="slide">
+      <img src="images/burntredwoman1.jpg" alt="Look 2">
+      <p class="caption">Look 02</p>
+    </section>
+
+    <section class="slide">
+      <img src="images/brent.jpg" alt="Look 3">
+      <p class="caption">Look 03</p>
+    </section>
+
+    <section class="slide">
+      <img src="images/burntredman.jpg" alt="Look 4">
+      <p class="caption">Look 04</p>
+    </section>
+
+    <section class="slide">
+      <img src="images/burntredwoman2.jpg" alt="Look 4">
+      <p class="caption">Look 04</p>
+
+    <section class="slide">
+      <img src="images/plain.jpg" alt="Look 4">
+      <p class="caption">Look 04</p>
+    </section>
+    </section>
+  </main>
+
+  <script>
+    const slides = document.querySelector('.slides');
+
+    // Arrow keys move between looks on a computer
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') slides.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+      if (e.key === 'ArrowLeft') slides.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
+    });
+  </script>
+    
+</body>
+</html>
