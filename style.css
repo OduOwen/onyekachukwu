@@ -21,6 +21,10 @@ body {
     z-index: -1;
 }
 
+h1{
+    font-size: 37px;
+}
+
 .rack-section{
     padding: 40px 16px;
     text-align: center;
@@ -385,4 +389,13 @@ body {
     cursor: pointer;
 }
 
+#backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
 
+#backdrop[hidden] {
+    display: none ;
+}
