@@ -245,11 +245,11 @@ h1{
 
 .cart-btn {
     position: fixed;
-    top: 16px;
-    right: 16px;
+    top: 12px;
+    right: 12px;
     z-index: 50;
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     border: none;
     border-radius: 50%;
     background:transparent;
@@ -257,21 +257,21 @@ h1{
 }
 
 .cart-btn img {
-    width: 24px;
-    height: 30px;
+    width: 20px;
+    height: 24px;
 }
 
 .cart-badge {
     position: absolute;
-    top: -6px;
-    right: -6px;
-    min-width: 20px;
-    height: 20px;
+    top: -4px;
+    right: -4px;
+    min-width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: #270d0a;
     color: #fff;
-    font-size: 12px;
-    line-height: 20px;
+    font-size: 10px;
+    line-height: 16px;
 }
 
 .cart-badge[hidden] {
@@ -354,11 +354,11 @@ h1{
 
 .menu-btn {
     position: fixed;
-    top: 16px;
-    left: 16px;
+    top: 12px;
+    left: 12px;
     z-index: 50;
-    height: 48px;
-    padding: 0 16px;
+    height: 36px;
+    padding: 0 8px;
     background: transparent;
     border: none;
     border-radius: 24px;
@@ -369,6 +369,8 @@ h1{
 }
 .menu-btn img {
     filter: brightness(0) invert(1);
+    width: 22px;
+    height: auto;
 }
 
 .menu-panel {
